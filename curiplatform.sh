@@ -25,7 +25,7 @@ sudo apt -y install git
 sudo git clone https://mguerreroitop:BgMhx4gMvfG6BUgdJvUw@bitbucket.org/mguerreroitop/curieyeti.git .
 
 #echo Creando la base de datos
-#sudo bash kubernetes/init.sh
+sudo bash kubernetes/init.sh
 
 echo Instalando extensiones de php
 sudo apt -y install php7.4-bcmath php7.4-curl php7.4-gd php7.4-intl php7.4-imap  php7.4-ldap php7.4-mbstring php7.4-mysql php7.4-soap php7.4-xml php7.4-zip  php7.4-tidy

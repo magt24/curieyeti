@@ -15,7 +15,7 @@ echo Instalando git
 sudo apt -y install git
 # https://<usuario>:<contraseña>@bitbucket.org/<usuario>/<repositorio>.git 
 # <contraseña> = Desde bitbucket arriba a la derecha click en el icono de usuario>Personal settings>App passwords>Create app password
-sudo git clone https://mguerreroitop:BgMhx4gMvfG6BUgdJvUw@bitbucket.org/mguerreroitop/curieyeti.git .
+sudo git clone https://mguerreroitop:BgMhx4gMvfG6BUgdJvUw@bitbucket.org/mguerreroitop/test.git .
 #echo Creando la base de datos
 sudo bash kubernetes/init.sh
 echo Instalando extensiones de php

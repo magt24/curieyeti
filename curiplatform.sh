@@ -6,7 +6,12 @@ sudo apt -y install apache2
 echo Instalando mysql
 sudo apt -y install mysql-server
 echo Instalando php7.4
-sudo apt -y install php7.4
+sudo apt install software-properties-common apt-transport-https -y
+sudo add-apt-repository ppa:ondrej/php -y
+sudo apt update
+sudo apt upgrade
+sudo apt install php-7.4 libapache2-mod-php7.4 -y
+sudo systemctl restart apache2
 echo Instalando repositorio de curieplaform
 cd /var/www/html/
 echo Borrando contenido del directorio html
@@ -62,3 +67,4 @@ echo COMANDO STANDARD O PARA SISTEMA CURIEPLATFORM
 yes | sudo composer install --no-dev
 echo COMANDO STANDARD O PARA SISTEMA CURIEPLATFORM
 yes | sudo composer upgrade --no-dev -W
+sudo systemctl restart apache2

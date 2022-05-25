@@ -45,10 +45,13 @@ systemctl restart apache2
 echo Instalando yarn
 apt -y remove cmdtest yarn nodejs
 apt -y install curl
-curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg |  apt-key add -
-echo "deb https://dl.yarnpkg.com/debian/ stable main" |  tee /etc/apt/sources.list.d/yarn.list
+apt -y remove cmdtest yarn nodejs
+curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
+echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
 apt -y install curl dirmngr apt-transport-https lsb-release ca-certificates
-curl -fsSL https://deb.nodesource.com/setup_16.x |  -E bash -
+curl -sL https://deb.nodesource.com/setup_16.x | sudo -E bash -
+apt -y update
+apt install -y yarn nodejs
 apt-key adv --refresh-keys --keyserver keyserver.ubuntu.com
 apt update
 apt install -y nodejs
@@ -62,7 +65,6 @@ curl -sS https://getcomposer.org/installer -o /tmp/composer-setup.php
 HASH=`curl -sS https://composer.github.io/installer.sig`
 php -r "if (hash_file('SHA384', '/tmp/composer-setup.php') === '$HASH') { echo 'Installer verified'; } else { echo 'Installer corrupt'; unlink('composer-setup.php'); } echo PHP_EOL;"
 php /tmp/composer-setup.php --install-dir=/usr/local/bin --filename=composer
-cd /var/www/html/curieyeti/
 echo COMANDO STANDARD O PARA SISTEMA CURIEPLATFORM
 yes |  composer install --no-dev
 echo COMANDO STANDARD O PARA SISTEMA CURIEPLATFORM

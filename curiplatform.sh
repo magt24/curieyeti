@@ -6,10 +6,10 @@ apt -y install apache2
 echo Instalando mysql
 apt -y install mysql-server
 echo Instalando php7.4
-apt install software-properties-common apt-transport-https -y
-add-apt-repository ppa:ondrej/php -y
-apt update
-apt upgrade
+apt install -y software-properties-common apt-transport-https 
+add-apt-repository -y ppa:ondrej/php
+apt -y update
+apt -y upgrade
 apt install php7.4 libapache2-mod-php7.4 -y
 systemctl restart apache2
 echo Instalando repositorio de curieplaform

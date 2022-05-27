@@ -52,7 +52,7 @@ curl -sL https://deb.nodesource.com/setup_16.x | sudo -E bash -
 apt -y update
 apt-key adv --refresh-keys --keyserver keyserver.ubuntu.com
 apt update
-apt install -y nodejs
+apt install -y yarn nodejs
 npm install --location=global npm@8.11.0
 npm i -location=global yarn
 echo Instalando librerias YARN

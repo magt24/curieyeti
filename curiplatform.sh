@@ -3,6 +3,7 @@ echo Actualizando repositorios
 apt -y update
 echo Instalando apache
 apt -y install apache2
+echo -Cambiar directorio raiz de apache-
 echo Instalando mysql
 apt -y install mysql-server
 echo Instalando php7.4
@@ -40,6 +41,20 @@ sed -i "s/;extension=soap/extension=soap/g" "/etc/php/7.4/apache2/php.ini" >/dev
 sed -i "s/;extension=xmlrpc/extension=xmlrpc/g" "/etc/php/7.4/apache2/php.ini" >/dev/null
 sed -i "s/;extension=xsl/extension=xsl/g" "/etc/php/7.4/apache2/php.ini" >/dev/null
 sed -i "s/;extension=tidy/extension=tidy/g" "/etc/php/7.4/apache2/php.ini" >/dev/null
+sed -i "s/;opcache.enable_cli=0/opcache.enable_cli=1/g" "/etc/php/7.4/apache2/php.ini" >/dev/null
+sed -i "s/;opcache.max_accelerated_files=10000/opcache.max_accelerated_files=40000/g" "/etc/php/7.4/apache2/php.ini" >/dev/null
+sed -i "s/;opcache.interned_strings_buffer=8/opcache.interned_strings_buffer=100/g" "/etc/php/7.4/apache2/php.ini" >/dev/null
+sed -i "s/;opcache.revalidate_freq=2/opcache.revalidate_freq=0/g" "/etc/php/7.4/apache2/php.ini" >/dev/null
+sed -i "s/;opcache.save_comments=1/opcache.save_comments=0/g" "/etc/php/7.4/apache2/php.ini" >/dev/null
+sed -i "s/;opcache.file_update_protection=2/opcache.file_update_protection=0/g" "/etc/php/7.4/apache2/php.ini" >/dev/null
+sed -i "s/;realpath_cache_ttl = 120/realpath_cache_ttl = 600/g" "/etc/php/7.4/apache2/php.ini" >/dev/null
+sed -i "s/mysqlnd.collect_statistics = On/mysqlnd.collect_statistics = Off/g" "/etc/php/7.4/apache2/php.ini" >/dev/null
+sed -i "s/X/X/g" "/etc/php/7.4/apache2/php.ini" >/dev/null
+sed -i "s/X/X/g" "/etc/php/7.4/apache2/php.ini" >/dev/null
+sed -i "s/X/X/g" "/etc/php/7.4/apache2/php.ini" >/dev/null
+sed -i "s/X/X/g" "/etc/php/7.4/apache2/php.ini" >/dev/null
+sed -i "s/X/X/g" "/etc/php/7.4/apache2/php.ini" >/dev/null
+
 echo Reiniciando apache
 systemctl restart apache2
 echo Instalando yarn
@@ -69,4 +84,5 @@ echo COMANDO STANDARD O PARA SISTEMA CURIEPLATFORM
 yes |  composer install --no-dev
 echo COMANDO STANDARD O PARA SISTEMA CURIEPLATFORM
 yes |  composer upgrade --no-dev -W
+chown -Rf www-data:www-data /var/www/html/*
 systemctl restart apache2

@@ -45,19 +45,19 @@ systemctl restart apache2
 echo Instalando yarn
 apt -y remove cmdtest yarn nodejs
 apt -y install curl
-apt -y remove cmdtest yarn nodejs
 curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
 echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
 apt -y install curl dirmngr apt-transport-https lsb-release ca-certificates
 curl -sL https://deb.nodesource.com/setup_16.x | sudo -E bash -
 apt -y update
-apt install -y yarn nodejs
 apt-key adv --refresh-keys --keyserver keyserver.ubuntu.com
 apt update
 apt install -y nodejs
-npm i -g yarn 
+npm install --location=global npm@8.11.0
+npm i -location=global yarn
 echo Instalando librerias YARN
 yarn install --production=true --modules-folder public_html/crm/libraries/
+curl --compressed -o- -L https://yarnpkg.com/install.sh | bash
 yarn upgrade --production=true --modules-folder public_html/crm/libraries/
 echo Instalando composer
 apt -y install php-cli unzip

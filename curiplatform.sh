@@ -1,4 +1,6 @@
 #!/bin/bash
+echo Cambiando origen de descargas al servidor principal
+sed -i 's/http:\/\/es./http:\/\//g' /etc/apt/sources.list
 echo Actualizando repositorios
 apt -y update
 echo Instalando apache

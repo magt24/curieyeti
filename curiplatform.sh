@@ -68,7 +68,7 @@ apt -y update
 apt-key adv --refresh-keys --keyserver keyserver.ubuntu.com
 apt -y update
 apt -y install nodejs
-npm install --location=global npm@8.11.0
+npm install -g npm@8.11.0
 npm i -location=global yarn
 echo Instalando librerias YARN
 yarn install --production=true --modules-folder public_html/crm/libraries/

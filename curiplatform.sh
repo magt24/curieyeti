@@ -57,7 +57,7 @@ sed -i "s/X/X/g" "/etc/php/7.4/apache2/php.ini" >/dev/null
 
 echo Reiniciando apache
 systemctl restart apache2
-echo Instalando yarn
+echo Instalando nodejs
 apt -y remove cmdtest yarn nodejs
 apt -y install curl
 curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
@@ -66,7 +66,7 @@ apt -y install curl dirmngr apt-transport-https lsb-release ca-certificates
 curl -sL https://deb.nodesource.com/setup_16.x | sudo -E bash -
 apt -y update
 apt-key adv --refresh-keys --keyserver keyserver.ubuntu.com
-apt update
+apt -y update
 apt -y install nodejs
 npm install --location=global npm@8.11.0
 npm i -location=global yarn

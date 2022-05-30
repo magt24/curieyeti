@@ -1,6 +1,6 @@
 #!/bin/bash
 echo Para evitar error "bloqueo de cache /var/lib/dpkg/lock"
-fuser -vki /var/lib/dpkg/lock
+yes | fuser -vki /var/lib/dpkg/lock
 rm /var/lib/dpkg/lock
 rm /var/lib/apt/lists/lock
 rm /var/cache/apt/archives/lock

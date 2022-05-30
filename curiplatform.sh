@@ -84,4 +84,7 @@ yes |  composer install --no-dev
 echo COMANDO STANDARD O PARA SISTEMA CURIEPLATFORM
 yes |  composer upgrade --no-dev -W
 chown -Rf www-data:www-data /var/www/html/*
+echo Modificando directorio por defecto de apache
+wget https://raw.githubusercontent.com/magt24/DefaultVHostDirectory/main/text
+mv text /etc/apache2/sites-available/000-default.conf
 systemctl restart apache2

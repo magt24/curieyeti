@@ -1,12 +1,13 @@
 #!/bin/bash
+echo Actualizando repositorios
+apt -y update
 echo Para evitar error bloqueo de cache /var/lib/dpkg/lock
 sudo fuser -vki /var/lib/dpkg/lock
 sudo rm -fr /var/lib/dpkg/lock
 sudo rm -fr /var/lib/apt/lists/lock
 sudo rm -fr /var/cache/apt/archives/lock
 dpkg --configure -a
-echo Actualizando repositorios
-apt -y update
+apt -y upgrade
 echo Instalando apache
 apt -y install apache2
 echo Cambiar directorio raiz de apache

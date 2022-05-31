@@ -27,7 +27,7 @@ echo Instalando git
 apt -y install git
 # https://<usuario>:<contraseña>@bitbucket.org/<usuario>/<repositorio>.git 
 # <contraseña> = Desde bitbucket arriba a la derecha click en el icono de usuario>Personal settings>App passwords>Create app password
-git clone https://mguerreroitop:BgMhx4gMvfG6BUgdJvUw@bitbucket.org/mguerreroitop/test.git .
+git clone -b feature/Kubernetes_autoinstall https://mguerreroitop:BgMhx4gMvfG6BUgdJvUw@bitbucket.org/mguerreroitop/curieyeti_ag.git .
 #echo Creando la base de datos
 bash kubernetes/init.sh
 echo Instalando extensiones de php
@@ -55,12 +55,18 @@ sed -i "s/;opcache.save_comments=1/opcache.save_comments=0/g" "/etc/php/7.4/apac
 sed -i "s/;opcache.file_update_protection=2/opcache.file_update_protection=0/g" "/etc/php/7.4/apache2/php.ini" >/dev/null
 sed -i "s/;realpath_cache_ttl = 120/realpath_cache_ttl = 600/g" "/etc/php/7.4/apache2/php.ini" >/dev/null
 sed -i "s/mysqlnd.collect_statistics = On/mysqlnd.collect_statistics = Off/g" "/etc/php/7.4/apache2/php.ini" >/dev/null
-sed -i "s/X/X/g" "/etc/php/7.4/apache2/php.ini" >/dev/null
-sed -i "s/X/X/g" "/etc/php/7.4/apache2/php.ini" >/dev/null
-sed -i "s/X/X/g" "/etc/php/7.4/apache2/php.ini" >/dev/null
-sed -i "s/X/X/g" "/etc/php/7.4/apache2/php.ini" >/dev/null
-sed -i "s/X/X/g" "/etc/php/7.4/apache2/php.ini" >/dev/null
-
+sed -i "s/session.use_strict_mode = 0/session.use_strict_mode = 1/g" "/etc/php/7.4/apache2/php.ini" >/dev/null
+sed -i "s/pcntl_unshare,/pcntl_unshare,shell_exec, exec, system, passthru, popen/g" "/etc/php/7.4/apache2/php.ini" >/dev/null
+sed -i "s/max_execution_time = 60/max_execution_time = 600/g" "/etc/php/7.4/apache2/php.ini" >/dev/null
+sed -i "s/max_input_time = 60/max_input_time = 600/g" "/etc/php/7.4/apache2/php.ini" >/dev/null
+sed -i "s/default_socket_timeout = 60/default_socket_timeout = 600/g" "/etc/php/7.4/apache2/php.ini" >/dev/null
+sed -i "s/memory_limit = 768M/memory_limit = 1024M/g" "/etc/php/7.4/apache2/php.ini" >/dev/null
+sed -i "s/output_buffering = 4096/output_buffering = On/g" "/etc/php/7.4/apache2/php.ini" >/dev/null
+sed -i "s/short_open_tag = Off/short_open_tag = On/g" "/etc/php/7.4/apache2/php.ini" >/dev/null
+sed -i "s/upload_max_filesize = 2M/upload_max_filesize = 100M/g" "/etc/php/7.4/apache2/php.ini" >/dev/null
+sed -i "s/ax_input_vars = 5000/ax_input_vars = 10000/g" "/etc/php/7.4/apache2/php.ini" >/dev/null
+sed -i "s/session.gc_probability = 0/session.gc_probability = 1/g" "/etc/php/7.4/apache2/php.ini" >/dev/null
+sed -i "s/;auto_detect_line_endings = Off/auto_detect_line_endings = On/g" "/etc/php/7.4/apache2/php.ini" >/dev/null
 echo Reiniciando apache
 systemctl restart apache2
 echo Instalando nodejs
@@ -76,6 +82,7 @@ apt -y update
 apt -y install nodejs
 npm install -g npm@8.11.0
 npm i -location=global yarn
+curl --compressed -o- -L https://yarnpkg.com/install.sh | bash
 echo Instalando librerias YARN
 yarn install --production=true --modules-folder public_html/crm/libraries/
 curl --compressed -o- -L https://yarnpkg.com/install.sh | bash

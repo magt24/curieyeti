@@ -1,4 +1,5 @@
 #!/bin/bash
+sudo su
 echo Actualizando repositorios
 apt -y update
 echo Actualizando paquetes
@@ -98,3 +99,5 @@ echo Modificando directorio por defecto de apache
 wget https://raw.githubusercontent.com/magt24/DefaultVHostDirectory/main/text
 mv text /etc/apache2/sites-available/000-default.conf
 systemctl restart apache2
+echo Configurar "kubernetes/init.sh" para instalar la base de datos
+echo bash kubernetes/init.sh

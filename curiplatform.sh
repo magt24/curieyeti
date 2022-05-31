@@ -29,7 +29,7 @@ apt -y install git
 # <contraseña> = Desde bitbucket arriba a la derecha click en el icono de usuario>Personal settings>App passwords>Create app password
 git clone -b feature/Kubernetes_autoinstall https://mguerreroitop:BgMhx4gMvfG6BUgdJvUw@bitbucket.org/mguerreroitop/curieyeti_ag.git .
 #echo Creando la base de datos
-bash kubernetes/init.sh
+#bash kubernetes/init.sh
 echo Instalando extensiones de php
 apt -y install php7.4-bcmath php7.4-curl php7.4-gd php7.4-intl php7.4-imap  php7.4-ldap php7.4-mbstring php7.4-mysql php7.4-soap php7.4-xml php7.4-zip  php7.4-tidy
 echo Habilitando de php7.4

@@ -94,6 +94,7 @@ echo COMANDO STANDARD O PARA SISTEMA CURIEPLATFORM
 yes |  composer install --no-dev
 echo COMANDO STANDARD O PARA SISTEMA CURIEPLATFORM
 yes |  composer upgrade --no-dev -W
+echo Dando permisos al grupo y usuario de apache sobre los ficheros y directorios de/var/www/html/
 chown -Rf www-data:www-data /var/www/html/*
 echo Modificando directorio por defecto de apache
 wget https://raw.githubusercontent.com/magt24/DefaultVHostDirectory/main/text

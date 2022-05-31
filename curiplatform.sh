@@ -1,5 +1,5 @@
 #!/bin/bash
-echo Para evitar error "bloqueo de cache /var/lib/dpkg/lock"
+echo Para evitar error bloqueo de cache /var/lib/dpkg/lock
 sudo fuser -vki /var/lib/dpkg/lock
 sudo rm -fr /var/lib/dpkg/lock
 sudo rm -fr /var/lib/apt/lists/lock
@@ -9,7 +9,7 @@ echo Actualizando repositorios
 apt -y update
 echo Instalando apache
 apt -y install apache2
-echo -Cambiar directorio raiz de apache-
+echo Cambiar directorio raiz de apache
 echo Instalando mysql
 apt -y install mysql-server
 echo Instalando php7.4

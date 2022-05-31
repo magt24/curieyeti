@@ -7,6 +7,7 @@ sudo rm -fr /var/lib/dpkg/lock
 sudo rm -fr /var/lib/apt/lists/lock
 sudo rm -fr /var/cache/apt/archives/lock
 dpkg --configure -a
+echo Actualizando paquetes
 apt -y upgrade
 echo Instalando apache
 apt -y install apache2

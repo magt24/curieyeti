@@ -100,5 +100,7 @@ echo Modificando directorio por defecto de apache
 wget https://raw.githubusercontent.com/magt24/DefaultVHostDirectory/main/text
 mv text /etc/apache2/sites-available/000-default.conf
 systemctl restart apache2
-echo Configurar "kubernetes/init.sh" para instalar la base de datos
-echo bash kubernetes/init.sh
+echo Configurar "kubernetes/init.sh" 
+echo nano /var/www/html/kubernetes/init.sh
+echo instalar la base de datos y otras configuraciones
+echo bash /var/www/html/kubernetes/init.sh
